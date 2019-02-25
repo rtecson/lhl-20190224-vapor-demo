@@ -1,0 +1,65 @@
+## Server-side Swift
+
+Today we talked about writing our own servers.
+
+You might want to do this, instead of using Parse,
+Cloudkit, or Firebase, to get more control over what our
+app can do. You might want to use your own VPS (virtual
+private server) instead of a service like Heroku or
+Google App Engine to both save money and to have more
+control over the server infrastructure.
+
+Servers are any computer that have an inbound internet
+connection. You can acquire one from a VPS provider like
+Linode, Digital Ocean, or Vultr. You probably also want
+a domain name to point at your server.
+
+Setting up a server will consist of:
+
+1. Buying a domain
+2. Provisioning your server from the VPS provider
+3. Pointing the domain to your server
+4. Configuring the server
+5. Deploying your app to the server
+
+"Configuring the server" will mean, at a minimum,
+doing a security lockdown (create your own user,
+disable root login, disable password login,
+install a firewall) and installing the required
+programs to run your app (probably at least a server
+like nginx, a database like Postgresql, and the runtime
+for whatever your app is written in (e.g. the JRE if
+your app is written in Java)). This is where you can
+really go in depth as you learn more about system
+administration.
+
+Deploying your app means installing it on the server so
+people can access it. It is very important to make sure
+your deploy setup is reproducable -- setting up scripts
+that deploy from a clean git repository, making a git
+tag, and pushing it after. It generally will entail
+compiling the app, uploading it along with whatever
+assets are required to the server, then telling some
+process on the server to reload and start using the new
+version.
+
+Lastly, we talked about two important things that almost
+all web services will need: Authentication and database
+access.
+
+Authentication is how clients tell us who they are.
+The simplest way for an API is probably using HTTP
+Basic auth (which is okay, as long as the connection
+is over HTTPS).
+
+Almost all servers will need to store some sort of
+information in a database. Postgresql is very widely
+used and supported, easy to install,
+and very robust and powerful.
+
+### Resources
+
+Code: https://github.com/rtecson/lhl-20190224-vapor-demo.git
+<br />
+Slides: https://drive.google.com/drive/folders/0B5etaj9U_idefk93bHphTkRQZGlickFSek43VDM2akV1dXU3MWszOGVleWFOVDFidUhZS1E
+<br />
